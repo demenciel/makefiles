@@ -83,40 +83,40 @@ fclean: check_docker_status clean	## Stop the containers and remove the volumes 
 # ---------------------------------------------------------------------------- #
 
 migration:
-	docker compose exec -it backend php artisan make:migration
+	docker compose exec -it $* php artisan make:migration
 
 migrate:
-	docker compose exec -it backend php artisan migrate
+	docker compose exec -it $* php artisan migrate
 
 rollback:
-	docker compose exec -it backend php artisan migrate:rollback
+	docker compose exec -it $* php artisan migrate:rollback
 
 rollback1:
-	docker compose exec -it backend php artisan migrate:rollback --step=1
+	docker compose exec -it $* php artisan migrate:rollback --step=1
 
 model:
-	docker compose exec -it backend php artisan make:model
+	docker compose exec -it $* php artisan make:model
 
 event:
-	docker compose exec -it backend php artisan make:event
+	docker compose exec -it $* php artisan make:event
 
 controller:
-	docker compose exec -it backend php artisan make:controller
+	docker compose exec -it $* php artisan make:controller
 
 service:
-	docker compose exec -it backend php artisan make:service
+	docker compose exec -it $* php artisan make:service
 
 server:
-	docker compose exec -it backend php artisan serve
+	docker compose exec -it $* php artisan serve
 
 reverb:
-	docker compose exec -it backend php artisan reverb:start --debug
+	docker compose exec -it $* php artisan reverb:start --debug
 
 reverb-reup:
-	docker compose exec -it backend php artisan reverb:restart
+	docker compose exec -it $* php artisan reverb:restart
 
 seed:
-	docker compose exec -it backend php artisan db:seed
+	docker compose exec -it $* php artisan db:seed
 
 status: 
 	docker compose exec -it backend php artisan migrate:status
